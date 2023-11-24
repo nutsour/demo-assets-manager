@@ -1,16 +1,14 @@
-package pojo;
-
-import java.util.Scanner;
+package bean;
 
 public class Assets {
     private String name;
-    private Integer number;
-    private Integer price;
+    private int number;
+    private int price;
     private String date;
     private String person;
     private String address;
 
-    public Assets(String name,Integer number,Integer price,String date,String person,String address){
+    public Assets(String name,int number,int price,String date,String person,String address){
         this.name = name;
         this.number = number;
         this.price = price;
@@ -19,8 +17,24 @@ public class Assets {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "Assets{" +
+                "name='" + name + '\'' +
+                ", number=" + number +
+                ", price=" + price +
+                ", date='" + date + '\'' +
+                ", person='" + person + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public String getName() {
         return name;
+    }
+
+    public static Assets createAssets(String name,int number,int price,String date,String person,String address){//创建一个本pojo类对象，使用静态方法
+        return new Assets(name,number,price,date,person,address);
     }
 
     public void setName(String name) {
@@ -71,20 +85,6 @@ public class Assets {
 
     }
 
-   public static Assets createAssets(){
-       Scanner scanner = new Scanner(System.in);
-       String name = scanner.nextLine();
-       String numberString = scanner.nextLine();
-       int number = Integer.parseInt(numberString);
-       String priceString = scanner.nextLine();
-       int price = Integer.parseInt(priceString);
-       String date = scanner.nextLine();
-       String person =  scanner.nextLine();
-       String address = scanner.nextLine();
 
-       Assets assets = new Assets(name, number, price, date, person, address);
-       return assets;
-
-   }
 
 }
